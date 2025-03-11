@@ -1,4 +1,6 @@
-﻿namespace DocumentVerificationAPI.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace DocumentVerificationAPI.Models
 {
     public class Document
     {
@@ -14,6 +16,8 @@
 
         public User User { get; set; } //referencce to user object
         public ICollection<VerificationLog> VerificationLogs { get; set; }
+        [NotMapped] // Exclude from database
+        public IFormFile File { get; set; } // File for upload
 
     }
 }

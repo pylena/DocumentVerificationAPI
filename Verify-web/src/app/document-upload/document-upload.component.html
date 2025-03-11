@@ -1,0 +1,32 @@
+<div class="container py-5 d-flex justify-content-center">
+      <h2 class="text-center mb-4 fw-bold text-primary">Upload Document Page</h2>
+  
+      <div class="card shadow-lg border-0 rounded-3 p-4">
+        <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="title" class="form-label fw-semibold">Title</label>
+            <input id="title" formControlName="title" class="form-control border-primary" placeholder="Enter document title" />
+            <div *ngIf="uploadForm.get('title')?.invalid && uploadForm.get('title')?.touched" class="text-danger small mt-1">
+              Title is required
+            </div>
+          </div>
+  
+          <div class="mb-3">
+            <label for="file" class="form-label fw-semibold">File</label>
+            <input type="file" id="file" class="form-control border-primary" (change)="onFileChange($event)" />
+            <div *ngIf="uploadForm.get('file')?.invalid && uploadForm.get('file')?.touched" class="text-danger small mt-1">
+              Please file is required.
+            </div>
+          </div>
+  
+          <button type="submit" class="btn btn-primary w-100 fw-bold" [disabled]="uploadForm.invalid">
+            <i class="bi bi-upload me-2"></i> Upload
+          </button>
+        </form>
+  
+        <div *ngIf="uploadSuccess" class="alert alert-success mt-3 text-center">
+          <i class="bi bi-check-circle me-2"></i> uploaded successfully!
+        </div>
+      </div>
+    </div>
+  

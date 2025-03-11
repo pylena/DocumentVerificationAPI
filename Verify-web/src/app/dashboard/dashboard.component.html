@@ -1,0 +1,35 @@
+<div class="container py-4">
+    <h2 class="text-center mb-4 fw-bold">--Document Dashboard--</h2>
+  
+    <div *ngIf="documents.length > 0; else noDocuments">
+      <div class="row g-3">
+        <div class="col-md-6 col-lg-4" *ngFor="let document of documents">
+          <div class="card shadow-sm border-0">
+            <div class="card-body">
+              <h5 class="card-title text-primary">{{ document.title }}</h5>
+              <p class="card-text mb-1">
+                <strong>Document ID:</strong> {{ document.id }}
+              </p>
+              <p class="card-text mb-1">
+                <strong>Created At:</strong> {{ document.createdAt | date: 'medium' }}
+              </p>
+              <span [ngClass]="{
+                'badge bg-success': document.status === 'Verified',
+                'badge bg-warning text-dark': document.status === 'Pending',
+                'badge bg-danger': document.status === 'Rejected'
+              }">
+                {{ document.status }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <ng-template #noDocuments>
+      <div class="alert alert-info text-center">
+        Sorry there is no documents to load.
+      </div>
+    </ng-template>
+  </div>
+  
