@@ -14,6 +14,12 @@ A full-stack document verification system where users can **upload official docu
 **Unique Verification Code** – Each document gets a unique digital code
 **Verify Documents** – Users can verify documents using the unique code.  
 
+## Entity Framework vs Dapper for fetching Data
+
+* EF Core may not be as fast as Dapper for complex queries, especially when dealing with large datasets. This is due to the overhead of tracking entities, generating SQL dynamically, and handling lazy loading.
+* Dapper is generally faster than EF Core for read-heavy operations
+
+
 ### API Documentation
 * Endpoint: POST /api/documents
 * Uploads a document and generates a unique verification code.
